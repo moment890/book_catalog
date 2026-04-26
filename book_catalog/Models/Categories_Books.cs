@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace book_catalog.Models {
-    internal class Categories_Books {
+    public class Categories_Books 
+    {
+        public int Category_Id { get; set; }
+        public string Category_Name { get; set; }
+        public ICollection<Genre_Books> Genres_Books { get; set; } = new List<Genre_Books>();
     }
 }

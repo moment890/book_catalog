@@ -9,6 +9,6 @@ namespace book_catalog.Models {
     {
         public int Category_Id { get; set; }
         public string Category_Name { get; set; }
-        public ICollection<Genre_Books> Genres_Books { get; set; } = new List<Genre_Books>();
+        public List<Genre_Books> Genres_Books { get; set; } = new List<Genre_Books>();
     }
 }

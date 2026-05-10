@@ -16,9 +16,9 @@ namespace book_catalog.ViewModels
     {
         private readonly BookContext db = new();
 
-        private List<Title_Books> _allTitle_Books = new();
-        public ObservableCollection<Title_Books> Title_Books { get; set; } = new();
-        public ObservableCollection<Genre_Books> Genre_Books { get; set; } = new();
+        private List<TitleBooks> _allTitle_Books = new();
+        public ObservableCollection<TitleBooks> Title_Books { get; set; } = new();
+        public ObservableCollection<Genr> Genre_Books { get; set; } = new();
         public ObservableCollection<Categories_Books> Categories_Books { get; set; } = new();
 
         [ObservableProperty]
@@ -26,10 +26,12 @@ namespace book_catalog.ViewModels
 
         [ObservableProperty]
         private Categories_Books _selectedCategories_Books;
+       
         [ObservableProperty]
-        private Genre_Books _selectedGenre_Books;
+        private Genr _selectedGenre_Books;
+       
         [ObservableProperty]
-        private Title_Books _selectedTitle_Books;
+        private TitleBooks _selectedTitle_Books;
 
 
         public MainWindowViewModel() 

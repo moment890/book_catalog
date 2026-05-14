@@ -14,40 +14,28 @@ namespace book_catalog.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        private readonly BookContext db = new();
+        private readonly BookContext _context = new();
 
-        private List<TitleBooks> _allTitle_Books = new();
-        public ObservableCollection<TitleBooks> Title_Books { get; set; } = new();
-        public ObservableCollection<Genr> Genre_Books { get; set; } = new();
-        public ObservableCollection<Categories_Books> Categories_Books { get; set; } = new();
+        public ObservableCollection<Book> Books { get; } = new();
+        public ObservableCollection<Category> Categories { get; } = new();
+        public ObservableCollection<Genre> Genres { get; } = new();
 
-        [ObservableProperty]
-        private string _searchText;
-
-        [ObservableProperty]
-        private Categories_Books _selectedCategories_Books;
-       
-        [ObservableProperty]
-        private Genr _selectedGenre_Books;
-       
-        [ObservableProperty]
-        private TitleBooks _selectedTitle_Books;
-
-
-        public MainWindowViewModel() 
-        {
-            LoadData();
-          
+        private void LoadData(object сategory) {
+            throw new NotImplementedException();
         }
 
-        private async void LoadData()
-        {
-            Categories_Books.Clear();
-            Genre_Books.Clear();
-            Title_Books.Clear();
+        private void LoadData(DocumentFormat.OpenXml.Drawing.Diagrams.Category category) {
+            Books.Clear();
+            foreach (var book in _context.Books.Include(b => b.Category).Include(b => b.Genre))
+                Books.Add(book);
 
+            Categories.Clear();
+            foreach (var Сategory in _context.Categories)
+                Categories.Add(Сategory);
 
-
+            Genres.Clear();
+            foreach (var genre in _context.Genres)
+                Genres.Add(genre);
         }
     }
 }

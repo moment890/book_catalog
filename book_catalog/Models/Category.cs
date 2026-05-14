@@ -15,4 +15,4 @@ namespace book_catalog.Models {
             public ICollection<Book> Books { get; set; } = new List<Book>();
         }
     }
-}
+

@@ -10,7 +10,8 @@ namespace book_catalog.Data {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           optionsBuilder.UseNpgsql("Host=localhost;Username=postgres;Password=postgres;Database=p511-890");
+           optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=p511-890");
         }
+       
     }
 }

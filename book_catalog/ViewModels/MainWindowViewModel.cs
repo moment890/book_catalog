@@ -69,7 +69,8 @@ namespace book_catalog.ViewModels
 
             object SelectedCategory = null;
             // Фильтр по категории
-            if (SelectedCategory != null && SelectedCategory.Id != -1) {
+            if (SelectedCategory != null && SelectedCategory.Id != -1) 
+            {
                 query = query.Where(p => p.Category.Id == SelectedCategory.Id);
             }
 

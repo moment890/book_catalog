@@ -59,7 +59,7 @@ namespace book_catalog.ViewModels
             }
         private void ApplyFilters() {
             // Начинаем с запроса к базе данных
-            IQueryable<Book> query = _context.Books;
+            IQueryable<Genre> query = _context.Books;
 
             // Фильтр по названию (регистронезависимый)
             if (!string.IsNullOrWhiteSpace(_searchText)) {

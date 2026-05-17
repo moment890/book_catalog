@@ -24,7 +24,7 @@ namespace book_catalog.ViewModels
         private string _searchText;
 
         [ObservableProperty]
-       private Category _selectedCategory;
+        private Category _selectedCategory;
 
         public MainWindowViewModel() 
         {
@@ -57,21 +57,22 @@ namespace book_catalog.ViewModels
             {
             ApplyFilters();
             }
+
         private void ApplyFilters() {
             // Начинаем с запроса к базе данных
-            IQueryable<Genre> query = _context.Books;
+            IQueryable<Book> query = db.Books;
 
             // Фильтр по названию (регистронезависимый)
             if (!string.IsNullOrWhiteSpace(_searchText)) {
                 string lowerSearchText = _searchText.ToLower();
-                query = query.Where(p => p.Name.ToLower().Contains(lowerSearchText));
+                query = query.Where(p => p.Title.ToLower().Contains(lowerSearchText));
             }
 
-            object SelectedCategory = null;
+            
             // Фильтр по категории
-            if (SelectedCategory != null && SelectedCategory.Id != -1) 
+            if (_selectedCategory != null && _selectedCategory.Id != -1) 
             {
-                query = query.Where(p => p.Category.Id == SelectedCategory.Id);
+                query = query.Where(p => p.Category.Id == _selectedCategory.Id);
             }
 
             // Очищаем текущую коллекцию в UI
